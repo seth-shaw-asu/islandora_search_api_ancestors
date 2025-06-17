@@ -225,7 +225,7 @@ class AddAncestors extends ProcessorPluginBase implements PluginFormInterface {
    */
   public function buildConfigurationForm(array $form, FormStateInterface $formState) {
     $form['#description'] = $this->t('Select the fields to which hierarchical data should be added.');
-    $form['#description'] .= ' ' . print_r($this->configuration['fields'], TRUE);
+
     foreach ($this->getHierarchyFields() as $field_id => $options) {
       $enabled = !empty($this->configuration['fields'][$field_id]);
       $form['fields'][$field_id]['status'] = [
