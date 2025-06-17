@@ -1,0 +1,8 @@
+name: 'islandora_search_api_ancestors'
+type: module
+description: 'Indexes an item&#039;s ancestors using Islandora&#039;s findAncestors utility function.'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - islandora:islandora
+  - search_api:search_api
