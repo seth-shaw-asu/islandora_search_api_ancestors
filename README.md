@@ -42,3 +42,8 @@ The current solution of the aggregated field doesn't work because it combines th
 
 Ideally the 'Index Heirarchy' processor would allow 'checkboxes' instead of 'radios' for the fields it will walk; that way we could just add the additional memberships field to the member of field which would remove the need for the aggregated one. It isn't a matter of just changing the configuration form, because it won't match the config schema. We _might_ be able to _extend_ the plugin to make it work and not rewrite _everything_.
 
+# Solution
+
+I created a new [Preprocessor Plugin](web/modules/islandora_search_api_ancestors/src/Plugin/search_api/processor/AddAncestors.php) that takes heavily from the `search_api` Index Heirarchy plugin but instead allows for multiple fields to follow. It uses IslandoraUtils to get a list of ancestors using all of the configured fields. It also starts with the item itself instead of with the existing field values to ensure all the relevant ancestor fields get crawled.
+
+To use it, enable the 'Islandora Ancestors' preprocessor plugin and configure it in the section below and then run a re-index.
