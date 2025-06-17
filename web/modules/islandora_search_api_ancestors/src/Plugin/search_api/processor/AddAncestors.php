@@ -290,16 +290,15 @@ class AddAncestors extends ProcessorPluginBase implements PluginFormInterface {
           continue;
         }
 
-        // Try walking from the current item, rather than their vales.
-        $fields_to_crawl = array_values(array_map(function ($property_specifier) {
-          // [$entity_type_id, $property] = explode('-', $property_specifier);
-          return substr($property_specifier, strpos($property_specifier, "-") + 1);
-        }, $properties));
+        // Walk from the current item rather than their values.
+        $fields_to_crawl = array_values(array_map(
+          fn($property_specifier) => substr($property_specifier, strpos($property_specifier, "-") + 1),
+          $properties
+        ));
 
         if ($entity = $item->getOriginalObject()->getEntity()) {
-          // If the item has an entity, we can use it to find ancestors.
-          $ancestors = $this->utils->findAncestors($entity, $fields_to_crawl);
-          foreach ($ancestors as $ancestor) {
+          foreach ($this->utils->findAncestors($entity, $fields_to_crawl) as $ancestor) {
+            // Deduplicate values.
             if (!in_array($ancestor, $field->getValues())) {
               $field->addValue($ancestor);
             }
