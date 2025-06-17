@@ -1,8 +1,6 @@
 Additional Membership Drupal Search
 ===================================
 
-Created: 2025-06-11
-
 # Overview
 
 We currently can't have a collection search contain the results of _both_ subcollections _and_ additional membership relationships. This is described with a bit more detail in a [problem statement document on Sharepoint](https://arizonastateu.sharepoint.com/:w:/r/sites/O365LIBInfoArch/Shared%20Documents/Our%20Products/Repository%20(%20KEEP%20and%20PRISM%20)/Search%20within%20Collection.docx?d=w77f4e094f6864361ae03240729d6b065&csf=1&web=1&e=IBRKKK). We need a solution that creates a union of these two sets.
